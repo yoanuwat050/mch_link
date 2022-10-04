@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'mchlink_database',
         'USER': 'root',
-        'PASSWORD': 'Anuwat1473',
+        'PASSWORD': 'Mch@11192',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
