@@ -1,0 +1,179 @@
+{% extends "mch_link/base.html" %} {% load static %}
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+User: {{ user.first_name }} {{ user.last_name }}
+
+{% endif %}
+{% endblock %}
+{% block navsearch %}
+
+{% endblock %}
+
+{% block all_content %}
+
+<div class="card type--profile">
+  <header class="card-heading card-background" id="card_img_02">
+    <img src="{{user.empuser.avatar.url}}"  alt="" class="img-circle">
+   
+  </header>
+  <div class="card-body">
+    <h3 class="name">{{ user.first_name }} {{ user.last_name }}</h3>
+    <span class="title">Frontend Developer </span>
+    <span class="count">{{ all }}</span><span>ทั้งหมด</span>
+   
+  </div>
+  <footer class="card-footer border-top">
+    <div class="row row p-t-10 p-b-10">
+   
+      <div class="col-xs-4"><span class="count">{{ recieve }}</span><span>การรับงาน</span></div>
+      <div class="col-xs-4"><span class="count">{{ work}}</span><span>การดำเนินการ</span></div>
+      <div class="col-xs-4"><span class="count">{{ done }}</span><span>เสร็จสิ้น</span></div>
+   
+    </div>
+  </footer>
+</div>
+{% endblock %}
+
+
+
+
+
+{% block staff_content %}
+
+
+
+
+
+
+
+
+{% for Repair in queryset2 %}
+<div class="col-md-4">
+<ul class="blocks blocks-100 blocks-xxl-12 blocks-lg-12 blocks-md-12 card-notes" id="masonry" style="position: relative;">
+<li class="masonry-item" style="position :relative">
+  <div id="note_id_0" value="{{Repair.repairStatus.id}}"
+  
+class="bg-white" 
+    >
+    <div class="card card-note transparent">
+      <header class="card-heading">
+        <div class="row">
+        
+          <div class="col-sm-12"><h2 class="card-title">
+            <button 
+            {% if Repair.repairStatus.id == 1 %}
+            class="btn btn-danger btn-fab btn-fab-xs"
+            ><i class="zmdi zmdi-alert-triangle"
+            {% endif%}
+              {% if Repair.repairStatus.id == 2 %}
+              class="btn btn-warning btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-run"
+              {% endif%}
+              {% if Repair.repairStatus.id == 3 %}
+              class="btn btn-info btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-pin"
+              {% endif%}
+              {% if Repair.repairStatus.id == 4 %}
+              class="btn btn-success btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-shield-check"
+              {% endif%}
+             ></i></button> {{Repair.repairDetail}}
+
+          </h2> 
+          
+          
+          
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-sm-12"><small>เลขที่ :  0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}} {{Repair.pub_date}} </small>
+            
+          </div>
+        </div>
+            
+      </header>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <medium><i class="zmdi zmdi-bug"></i> : {{Repair.repairCause}}</medium>
+            
+            
+          </div>
+          
+        </div>
+        <div class="row">
+
+          <div class="col-sm-12">
+            
+            <medium><i class="zmdi zmdi-pin"></i> : {{Repair.repairRequester.empuser.empDepartment}}</medium> 
+            
+          </div>
+        </div>
+       
+ 
+    
+      </div>
+      <div class="card-footer">
+        <ul class="card-actions icons left-bottom">
+           <li>
+            {% if perms.repair.add_repair %}
+            <a href="{% url 'repair:repair-review' slug=Repair.slug %}">
+              <i class="zmdi zmdi-mood"></i>
+            </a>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+              <i class="zmdi zmdi-collection-item"></i>
+            </a>
+          </li>
+
+
+        </ul>
+        <ul class="card-actions right-bottom">
+             
+            <li>
+              {% if perms.repair.change_repair %}
+              <a href="{% url 'repair:repair-work' slug=Repair.slug %}"> 
+               
+                <button class="btn btn-info btn-xs">ดำเนินการ<div class="ripple-container"></div>
+                </button>
+
+              </a>
+              <a href="{% url 'repair:repair_desc' slug=Repair.slug %}"> 
+           
+                <button class="btn btn-success btn-xs">ปิดงาน<div class="ripple-container"></div></button>
+
+              </a>
+              <a href="{% url 'repair:repair-forward' slug=Repair.slug %}"> 
+           
+                <button class="btn btn-danger btn-xs">ส่งต่อ<div class="ripple-container"></div></button>
+
+              </a>
+           
+          
+        
+              {% endif %}
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+
+    </ul>
+  </div>
+
+
+
+  {% endfor %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% endblock %}

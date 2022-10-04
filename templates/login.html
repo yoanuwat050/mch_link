@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>MCH_LINK</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Poppins:300,400,500,600" rel="stylesheet">
+	<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="{% static "assets/css/vendor.bundle.css" %}">
+	<link rel="stylesheet" href="{% static "assets/css/app.bundle.css" %}">
+	<link rel="stylesheet" href="{% static "assets/css/theme-k.css" %}">
+
+
+</head>
+<body id="auth_wrapper" >
+  <div id="login_wrapper">
+
+    <div id="login_content">
+			<div class="logo">
+				<img src="{% static "/img/link_logo.png" %}" alt="logo" class="logo-img">
+			</div>
+      <h1 class="login-title">
+        ลงชื่อเพื่อเข้าใช้งาน
+      </h1>
+      <div class="login-body">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">username</label>
+            <input name="username"type="input" class="form-control">
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Password</label>
+            <input name="password" type="password" class="form-control">
+          </div>
+          <a href="javascript:void(0)" class="forgot-pass pull-right">Forgot Password?</a>
+          <div class="checkbox inline-block">
+            <label>
+              <input type="checkbox" class="checkbox-inline" value="">
+              Remember Me
+            </label>
+          </div>
+          <button class="btn btn-info btn-block m-t-40" type="submit">Log In</button>
+       
+          <div class="login-options">
+           
+        </form>
+
+
+
+      </div>
+      <div class="login-footer p-15">
+        <p>
+          คุณยังไม่มีบัญชีใช่ไหม? <a href="{% url 'register_user' %}" data-toggle="register">สร้างบัญชี</a>
+        </p>
+      </div>
+      <div id="register_wrapper">
+        <ul class="card-actions icons right-top">
+          <li>
+            <a href="javascript:void(0)" data-toggle="register">
+              <i class="zmdi zmdi-close"></i>
+            </a>
+          </li>
+        </ul>
+				<div class="logo">
+					<img src="assets/img/logo/ml-logo.png" alt="logo" class="logo-img">
+				</div>
+        <h1 class="login-title">
+          Create an account
+        </h1>
+        <div class="login-body">
+					<div class="col-xs-12">
+						<button class="btn btn-facebook btn-block"><i class="zmdi zmdi-facebook"></i> Sign Up with Facebook</button>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-google btn-block"><i class="zmdi zmdi-google-plus"></i> Sign Up with Google</button>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-twitter btn-block"><i class="zmdi zmdi-twitter"></i> Sign Up with Twitter</button>
+					</div>
+
+          <form class="clear-both">
+						<h2 class="text-center p-t-20">
+							Or sign up below
+						</h2>
+            <div class="form-group label-floating is-empty">
+              <label class="control-label">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group label-floating is-empty">
+              <label class="control-label">Email</label>
+              <input type="email" class="form-control">
+            </div>
+            <div class="form-group label-floating is-empty">
+              <label class="control-label">Password</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="form-group label-floating is-empty">
+              <label class="control-label">Confirm Password</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="checkbox inline-block">
+              <label>
+                <input type="checkbox" class="checkbox-inline" value="">
+                I agree to the <a href="javascript:void(0)">terms of services</a>
+              </label>
+            </div>
+            <a href="javascript:void(0)" class="btn btn-info btn-block m-t-40">Create my account</a>
+          </form>
+        </div>
+        <div class="login-footer p-15">
+          <p>
+            Already have an account? <a href="javascript:void(0)" data-toggle="register">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static "assets/js/vendor.bundle.js" %}"></script>
+	<script src="{% static "assets/js/app.bundle.js" %}"></script>
+</body>
+</html>
+<!--
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
+-->

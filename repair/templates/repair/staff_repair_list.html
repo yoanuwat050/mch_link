@@ -1,0 +1,276 @@
+{% extends "mch_link/base.html" %} {% load static %}
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+User: {{ user.first_name }} {{ user.last_name }}
+
+{% endif %}
+{% endblock %}
+
+
+{% block topic2 %}
+{% if user.is_authenticated %}
+
+
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+{% block staff_content %}
+
+
+
+
+<div class="card">
+  <header class="card-heading">
+    <h2 class="card-title">สถานะการทำงานของเจ้าหน้าที่</h2>
+  </header>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked nav-pills-primary" role="tablist">
+          <li class="active">
+            <a href="#pillnav8" role="tab" data-toggle="tab" aria-expanded="true">
+              ทั้งหมด
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="">
+            <a href="#pillnav9" role="tab" data-toggle="tab" aria-expanded="false">
+              วินัย
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="">
+            <a href="#pillnav10" role="tab" data-toggle="tab" aria-expanded="false">
+              ธนสาร
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="">
+            <a href="#pillnav11" role="tab" data-toggle="tab" aria-expanded="false">
+              อนุวัตร
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="">
+            <a href="#pillnav12" role="tab" data-toggle="tab" aria-expanded="false">
+              เกียรติศักดิ์
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9">
+        <div id="pillContent3" class="tab-content m-t-15">
+          <div class="tab-pane fade active in" id="pillnav8">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Staff</th>
+                      <th>Status</th>
+                      <th>Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Repair in staff_repair_list %}
+                    
+                    <tr>
+                      <th scope="row"> {{ forloop.counter }}</th>
+                      <td>{{Repair.repairStatus}}</td>
+                      <td>
+                        เลขที่ : 0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}}</small>
+                      </td>
+                      <td>
+                        <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                          <i class="zmdi zmdi-file-text"></i>
+                        </a>
+                      </td>
+                    </tr>
+                 
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pillnav9">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Staff</th>
+                      <th>Status</th>
+                      <th>Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Repair in staff_repair_list %}
+                    {% if Repair.repairStaff.id == 1 %}
+                    <tr>
+                      <th scope="row"> {{ forloop.counter }}</th>
+                      <td>{{Repair.repairStatus}}</td>
+                      <td>
+                        เลขที่ : 0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}}</small>
+                      </td>
+                      <td>
+                        <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                          <i class="zmdi zmdi-file-text"></i>
+                        </a>
+                      </td>
+                    </tr>
+                 
+                    {% endif%}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pillnav10">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Staff</th>
+                      <th>Status</th>
+                      <th>Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Repair in staff_repair_list %}
+                    {% if Repair.repairStaff.id == 1 %}
+                    <tr>
+                      <th scope="row"> {{ forloop.counter }}</th>
+                      <td>{{Repair.repairStatus}}</td>
+                      <td>
+                        เลขที่ : 0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}}</small>
+                      </td>
+                      <td>
+                        <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                          <i class="zmdi zmdi-file-text"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    {% endif%}
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="pillnav11">
+
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Staff</th>
+                      <th>Status</th>
+                      <th>Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Repair in staff_repair_list %}
+                    {% if Repair.repairStaff.id == 1 %}
+                    <tr>
+                      <th scope="row"> {{ forloop.counter }}</th>
+                      <td>{{Repair.repairStatus}}</td>
+                      <td>
+                        เลขที่ : 0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}}</small>
+                      </td>
+                      <td>
+                        <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                          <i class="zmdi zmdi-file-text"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    {% endif%}
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+          </div>
+          <div class="tab-pane fade" id="pillnav12">
+
+
+
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Staff</th>
+                      <th>Status</th>
+                      <th>Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Repair in staff_repair_list %}
+                    {% if Repair.repairStaff.id == 2 %}
+                    <tr>
+                      <th scope="row"> </th>
+                      <td>{{Repair.repairStatus}}</td>
+                      <td>
+                        เลขที่ : 0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}}</small>
+                      </td>
+                      <td>
+                        <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                          <i class="zmdi zmdi-file-text"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    {% endif%}
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+{% endblock %}

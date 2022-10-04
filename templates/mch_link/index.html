@@ -1,0 +1,139 @@
+{% extends "mch_link/base.html" %} {% load static %}
+{% block topic2 %}
+<h2>MCH GATEWAY</h2>
+{% endblock %}
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+User: {{ user.first_name }} {{ user.last_name }}
+
+{% endif %}
+{% endblock %}
+
+
+
+{% block all_content %}
+<div class="row">
+    
+
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="card">
+          <header class="card-heading ">
+            <h2 class="card-title">โปรแกรมสนับสนุน</h2>
+            <ul class="card-actions icons right-top">
+              <li>
+                <a href="javascript:void(0)" data-toggle-view="code">
+                  <i class="zmdi zmdi-code"></i>
+                </a>
+              </li>
+            </ul>
+          </header>
+          <div class="card-body">
+            <div class="list-group m-t-40">
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                    <a href="http://61.19.33.102/smo">
+                  <img src="{% static "/img/smartoffice_logo.png" %}"  alt="contact person" class="img-circle circle"></a>
+                </div>
+                <div class="row-content">
+                  
+                  <h4 class="list-group-item-heading">Smart Office</h4>
+                  <p class="list-group-item-text">โปรแกรมสำหรับรับส่งเอกสาร และจัดการระบบสำนักงาน</p>
+                </div>
+              </div>
+              <!--
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/08.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">WAIT</h4>
+                  <p class="list-group-item-text">WAIT</p>
+              </div>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/07.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/13.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card">
+          <header class="card-heading ">
+            <h2 class="card-title">List Group with Avatars</h2>
+            <ul class="card-actions icons right-top">
+              <li>
+                <a href="javascript:void(0)" data-toggle-view="code">
+                  <i class="zmdi zmdi-code"></i>
+                </a>
+              </li>
+            </ul>
+          </header>
+          <div class="card-body">
+            <div class="list-group m-t-40">
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/11.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/08.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/07.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <img src="assets/img/profiles/13.jpg" alt="contact person" class="img-circle circle">
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="More Info"><i class="zmdi zmdi-info"></i></a></div>
+                  <h4 class="list-group-item-heading">List item with icon</h4>
+                  <p class="list-group-item-text">Fashion axe kitsch marfa, art party gluten-free beard meditation lumbersexual pinterest sapiente. Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie banjo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+</div>
+{% endblock %}

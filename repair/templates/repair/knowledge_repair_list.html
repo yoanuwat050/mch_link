@@ -1,0 +1,121 @@
+{% extends "mch_link/base.html" %}  {% load static %} 
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+     User: {{ user.first_name }} {{ user.last_name }}
+    
+   {% endif %}
+{% endblock %}
+{% block navsearch %} 
+
+<form role='search' class='navbar-form' id='navbar_form' method='GET' action='.'>
+
+  <div class='form-group'>
+    <input type='text' placeholder="Search and press enter..." class='form-control' id='navbar_search' autocomplete='off' name='q' value='{{ request.GET.q }}'> 
+    <i data-navsearch-close class="zmdi zmdi-close close-search"></i>
+  </div>
+  <button type="submit" class="hidden btn btn-default">Submit</button>
+
+</form>
+{% endblock %}
+
+
+{% block topic2 %}
+{% if user.is_authenticated %}
+<div class="col-md-12">
+    <form class='form' method='GET' action='.'>
+    <input class="form-control" type='text' name='q' placeholder="ค้นหา" value='{{ request.GET.q }}'>
+  </form>
+</div>
+
+
+
+{% endif %}
+{% endblock %}
+
+
+<!--
+{% block sideleft %} 
+<li><a href=""><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
+
+{% endblock %}
+-->
+
+
+  {% block staff_content %}
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <header class="card-heading ">
+          <h2 class="card-title">คลังความรู้</h2>
+          <p></p>
+          <ul class="card-actions icons right-top">
+            <li>
+              <a href="{% url 'repair:repair-staff' %}">
+                <i class="zmdi zmdi-refresh-alt"></i>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                <i class="zmdi zmdi-more-vert"></i>
+              </a>
+              <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                <li>
+                  <a href="javascript:void(0)">Option One</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Option Two<div class="ripple-container"></div></a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Option Three<div class="ripple-container"></div></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          
+        </header>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ปัญหา</th>
+                  <th>การแก้ไขปัญหา</th>
+                  <th>รายละเอียด</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for Repair in knowledge_repair_list %}
+                <tr > 
+                  <th scope="row"> {{ forloop.counter }}</th>
+                  <td>  <small>{{ Repair.repairCause }}</small></td>
+                  <td>
+                    
+                    <small>{{ Repair.repairDesc }}</small></td>
+                  
+                  </td>
+                  <td >
+                    <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+                      <button class="btn btn-primary btn-xs">see<div class="ripple-container"></div></button>
+                    </a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+  
+
+
+{% block content %}
+
+{% endblock %}
+
+

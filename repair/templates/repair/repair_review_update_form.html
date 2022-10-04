@@ -1,0 +1,43 @@
+{% extends "mch_link/base.html" %}  {% load static %} 
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+     User: {{ user.first_name }} {{ user.last_name }}
+    
+   {% endif %}
+{% endblock %}
+
+{% block topic2 %}
+<form method="POST">
+    {% csrf_token %}
+
+  
+
+    <div class="form-group label-floating is-empty">
+      <div class="col-md-12">
+        <label >ให้คะแนนการบริการ : </label>
+        
+        <select class="select form-control" {{form.repairReview}} </select>
+      </div>
+      <div class="col-md-12 ">
+        <h3>ข้อเสนอแนะ</h3>
+
+        <textarea class="form-control" name="repairReviewDetail" cols="40" rows="10" maxlength="500"  id="id_repairReviewDetail"></textarea>
+    
+        
+      </div>
+      <div class="col-md-12 ">
+        <button class="btn btn-success btn-block m-t-40" type="submit">บันทึก</button>
+      </div>
+    </div>
+    
+  
+
+     
+  </form>
+
+
+
+{% endblock %}
+
+

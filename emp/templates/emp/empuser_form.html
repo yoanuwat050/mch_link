@@ -1,0 +1,9 @@
+<form action="" method="POST">
+
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <div class="col-md-12">
+        <button class="btn btn-success btn-block m-t-40" type="submit">บันทึก</button>
+      </div>
+</form>

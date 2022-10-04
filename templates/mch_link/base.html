@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>MCH_LINK</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Poppins:300,400,500,600" rel="stylesheet">
+	<link rel="icon" href="{% static "assets/img/favicon.ico" %}" type="image/x-icon">
+	<link rel="stylesheet" href="{% static "assets/css/vendor.bundle.css" %}">
+	<link rel="stylesheet" href="{% static "assets/css/app.bundle.css" %}">
+	<link rel="stylesheet" href="{% static "assets/css/theme-b.css" %}">
+	<link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+	<script>
+	function printContent(el){
+			var restorepage = document.body.innerHTML;
+			var printcontent = document.getElementById(el).innerHTML;
+			document.body.innerHTML = printcontent;
+			window.print();
+			document.body.innerHTML = restorepage;
+	}
+	</script>
+</head>
+<body>
+	
+	<div id="app_wrapper">
+		<header id="app_topnavbar-wrapper">
+			<nav role="navigation" class="navbar topnavbar">
+				<div class="nav-wrapper">
+					<div id="logo_wrapper" class="nav navbar-nav">
+						<ul>
+							<li class="logo-icon">
+								{% if user.is_authenticated %}
+								<a href="{% url 'repair:index' %}">
+								{% else %}
+								<a href="{% url 'emp:index' %}">
+								{% endif %}
+									<div class="logo">
+										<img src="{% static "assets/img/logo/logo_link.png" %}" alt="Logo">
+									</div>
+									<h1 class="brand-text" style="font-size: 20px">MCH LINK</h1>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="nav navbar-nav left-menu ">
+						<li class="menu-icon">
+							<a href="javascript:void(0)" role="button" data-toggle-state="app_sidebar-menu-collapsed" data-key="leftSideBar">
+								<i class="mdi mdi-backburger"></i>
+							</a>
+						</li>
+					</ul>
+					{% if user.is_authenticated %}
+					<ul class="nav navbar-nav left-menu">
+						<li>
+							<a href="javascript:void(0)" class="nav-link" data-toggle-profile="profile-open">
+								<i class="zmdi zmdi-account"></i>
+							</a>
+						</li>
+						
+						
+					</ul>
+					
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="{% url 'repair:repair-create' %}"><i class="zmdi zmdi-hc-5x zmdi-plus-square"></i>
+					
+						
+						
+
+						
+					</ul>
+					{% endif %}	
+				</div>
+				{% block navsearch %} {% endblock %}
+				
+			</nav>
+		</header>
+		<aside id="app_sidebar-left">
+			<nav id="app_main-menu-wrapper" class="scrollbar">
+				<div class="sidebar-inner sidebar-push">
+					<div class="card profile-menu" id="profile-menu">
+						<header class="card-heading card-img alt-heading">
+							<div class="profile">
+								<header class="card-heading card-background" id="card_img_02">
+									<img src="assets/img/profiles/18.jpg" alt="" class="img-circle max-w-75 mCS_img_loaded">
+								</header>
+								<a href="javascript:void(0)" class="info" data-profile="open-menu"><span>{% block profile_loginname %} {% endblock %}</span></a>
+							</div>
+						</header>
+						<ul class="submenu">
+							{% if user.is_authenticated %}
+							<li>
+								<a href="{% url 'emp:emp-update' user.empuser.id %}"><i class="zmdi zmdi-account"></i> Profile</a>
+							</li>
+							<li>
+								<a href="app-mail.html"><i class="zmdi zmdi-email"></i> Messages</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="zmdi zmdi-settings"></i> Account Settings</a>
+							</li>
+							
+							<li>
+								<a href="{% url 'logout' %}"><i class="zmdi zmdi-sign-in"></i> Sign Out</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="sidebar-header">NAVIGATION</li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url 'repair:repair-create' %}"><i class="zmdi zmdi-plus"></i>  ขอรับบริการด้านสารสนเทศ</a></li>
+						<li><a href="{% url 'repair:repair-me' %}"><i class="zmdi zmdi-file-text"></i>  รายการของฉัน</a></li>
+						<li><a href="{% url 'repair:repair-staff' %}"><i class="zmdi zmdi-file-text"></i>  สถานะการทำงานของเจ้าหน้าที่</a></li>
+						{% if perms.repair.change_repair %}
+						<li><a href="{% url 'repair:repair-my' %}"><i class="zmdi zmdi-file-text"></i>  การรับงานของฉัน</a></li>
+						{% endif %}
+
+						<li><a href="{% url 'repair:repair-knowledge' %}"><i class="zmdi zmdi-wrench"></i>  แก้ปัญหาด้วยตนเอง</a></li>
+
+						{% endif %}
+
+						<!--{% block sideleft %} {% endblock %} -->
+
+
+						<!--
+
+						<li><a href="index.html"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
+						<li class="nav-dropdown active open"><a href="#"><span></span><i class="zmdi zmdi-widgets"></i>Cards</a>
+							<ul class="nav-sub">
+								<li class="active"><a href="card-templates.html">Card Templates</a></li>
+								<li><a href="card-demos.html">Card Demos</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown">
+							<a href="#"><i class="zmdi zmdi-view-quilt"></i>App Views</a>
+							<ul class="nav-sub">
+								<li><a href="app-mail.html">Mail</a></li>
+								<li class="nav-dropdown">
+									<a href="#">E-Commerce</a>
+									<ul class="nav-sub">
+										<li><a href="ecommerce-dashboard.html">Dashboard</a></li>
+										<li><a href="ecommerce-products.html">Products</a></li>
+										<li><a href="ecommerce-customers.html">Customers</a></li>
+										<li><a href="ecommerce-settings.html">Settings</a></li>
+									</ul>
+								</li>
+								<li><a href="app-chat.html">Chat</a></li>
+								<li><a href="app-calendar.html">Calendar</a></li>
+								<li><a href="app-contacts.html">Contacts</a></li>
+								<li><a href="app-locations.html">Office Locations</a></li>
+								<li><a href="app-notes.html">Notes</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown">
+							<a href="#"><i class="zmdi zmdi-google-pages"></i>Page Views</a>
+							<ul class="nav-sub">
+								<li><a href="page-profile.html">Profile</a></li>
+								<li><a href="page-invoice.html">Invoice</a></li>
+								<li><a href="page-timeline.html">Timeline</a></li>
+								<li><a href="page-contact.html">Contact Us</a></li>
+								<li><a href="page-pricing-tables.html">Pricing Tables</a></li>
+								<li><a href="page-photo-gallery.html">Photo Gallery</a></li>
+								<li><a href="page-404.html">404</a></li>
+								<li><a href="page-500.html">500</a></li>
+								<li><a href="page-maintenance.html">Maintenance</a></li>
+								<li class="nav-dropdown"><a href="#">Authentication</a>
+									<ul class="nav-sub">
+										<li><a href="login.html">Login &amp; Register</a></li>
+										<li><a href="lock-screen.html">Lock Screen</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-dropdown">
+							<a href="#"><span></span><i class="zmdi zmdi-view-carousel"></i>Layouts</a>
+							<ul class="nav-sub">
+								<li class="nav-dropdown">
+									<a href="#"><span></span>App Layouts</a>
+									<ul class="nav-sub">
+										<li><div class="radio block"><label><input type="radio" name="layoutMode" value="" checked>Full Width</label></div></li>
+										<li><div class="radio block"><label><input type="radio" name="layoutMode" value="boxed-layout">Boxed Layout</label></div></li>
+									</ul>
+								</li>
+								<li class="nav-dropdown">
+									<a href="#"><span></span>Page Layouts</a>
+									<ul class="nav-sub">
+										<li><a href="layout-fullwidth-v1.html">Full Width v1</a></li>
+										<li><a href="layout-fullwidth-v2.html">Full Width v2</a></li>
+										<li><a href="layout-boxed-v1.html">Boxed Layout v1</a></li>
+										<li><a href="layout-boxed-v2.html">Boxed Layout v2</a></li>
+										<li><a href="layout-left-sidenav-v1.html">Left Side Nav v1</a></li>
+										<li><a href="layout-left-sidenav-v2.html">Left Side Nav v2</a></li>
+										<li><a href="layout-right-sidenav-v1.html">Right Side Nav v1</a></li>
+										<li><a href="layout-right-sidenav-v2.html">Right Side Nav v2</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-dropdown"><a href="#"><i class="zmdi zmdi-palette"></i>User Interface</a>
+							<ul class="nav-sub">
+								<li><a href="ui-alerts.html">Alerts</a></li>
+								<li><a href="ui-animations.html">Animations</a></li>
+								<li><a href="ui-badges-labels.html">Badges &amp; Labels</a></li>
+								<li><a href="ui-buttons.html">Buttons</a></li>
+								<li><a href="ui-colors.html">Colors</a></li>
+								<li><a href="ui-grid.html">Grid System</a></li>
+								<li><a href="ui-icons.html">Icons</a></li>
+								<li><a href="ui-list.html">List</a></li>
+								<li><a href="ui-preloaders.html">Preloaders</a></li>
+								<li><a href="ui-typography.html">Typography</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown"><a href="#"><i class="zmdi zmdi-ungroup"></i>Components</a>
+							<ul class="nav-sub">
+								<li><a href="component-collapsible.html">Collapsible</a></li>
+								<li><a href="component-chips.html">Chips</a></li>
+								<li><a href="component-drawers.html">Drawers</a></li>
+								<li><a href="component-dropdowns.html">Dropdowns</a></li>
+								<li><a href="component-modals.html">Modals</a></li>
+								<li><a href="component-notifications-dialogs.html">Notifications &amp; Dialogs</a></li>
+								<li><a href="component-scrollable.html">Scrollable</a></li>
+								<li><a href="component-progressbars-sliders.html">Sliders &amp; Progressbars</a></li>
+								<li><a href="component-tabs.html">Tabs &amp; Pills</a></li>
+								<li><a href="component-tooltips-popovers.html">Tooltips &amp; Popovers</a></li>
+								<li><a href="component-toolbars.html">Toolbars</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown"><a href="#"><i class="zmdi zmdi-chart"></i>Charts</a>
+							<ul class="nav-sub">
+								<li><a href="charts-chartist.html">Chartist</a></li>
+								<li><a href="charts-c3.html">C3 Charts</a></li>
+								<li><a href="charts-chartjs.html">Chartjs</a></li>
+								<li><a href="charts-morrisjs.html">Morris.js Charts</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown"><a href="#"><i class="zmdi zmdi-view-subtitles"></i>Forms</a>
+							<ul class="nav-sub">
+								<li><a href="form-elements.html">Form Elements</a></li>
+								<li><a href="form-components.html">Form Components</a></li>
+								<li><a href="form-layouts.html">Form Layouts</a></li>
+								<li><a href="form-validation.html">Form Validation</a></li>
+								<li><a href="form-wizard.html">Form Wizard</a></li>
+							</ul>
+						</li>
+						<li class="nav-dropdown"><a href="#"><i class="zmdi zmdi-view-headline"></i>Tables</a>
+							<ul class="nav-sub">
+								<li><a href="tables.html">Basic Tables</a></li>
+								<li><a href="tables-datatables.html">Data Tables</a></li>
+							</ul>
+						</li>
+						<li class="sidebar-header">EXTRAS</li>
+						<li class="nav-dropdown">
+							<a href="#" title="Menu Levels">
+								<i class="zmdi zmdi-folder"></i>Menu Levels</a>
+								<ul class="nav-sub">
+									<li>
+										<a href="javascript:;" title="Level 2.1">
+											<i class="fa fa-fw fa-file"></i> Level 1.1
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;" title="Level 2.2">
+											<i class="fa fa-fw fa-file"></i> Level 1.2
+										</a>
+									</li>
+									<li class="nav-dropdown">
+										<a href="#" title="Level 2.3">
+											<i class="fa fa-fw fa-folder-open"></i> Level 1.3
+										</a>
+										<ul class="nav-sub">
+											<li>
+												<a href="javascript:;" title="Level 3.1">
+													<i class="fa fa-fw fa-file"></i> Level 2.1
+												</a>
+											</li>
+											<li class="nav-dropdown">
+												<a href="#" title="Level 3.2">
+													<i class="fa fa-fw fa-folder-open"></i> Level 2.2
+												</a>
+												<ul class="nav-sub">
+													<li>
+														<a href="javascript:;" title="Level 4.1">
+															<i class="fa fa-fw fa-file"></i> Level 3.1
+														</a>
+													</li>
+													<li class="nav-dropdown">
+														<a href="#" title="Level 4.2">
+															<i class="fa fa-fw fa-folder-open"></i> Level 3.2
+														</a>
+														<ul class="nav-sub">
+															<li class="nav-dropdown">
+																<a href="#" title="Level 5.1">
+																	<i class="fa fa-fw fa-folder-open"></i> Level 4.1
+																</a>
+																<ul class="nav-sub">
+																	<li>
+																		<a href="javascript:;" title="Level 6.1">
+																			<i class="fa fa-fw fa-file"></i> Level 5.1
+																		</a>
+																	</li>
+																	<li>
+																		<a href="javascript:;" title="Level 6.2">
+																			<i class="fa fa-fw fa-file"></i> Level 5.2
+																		</a>
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<a href="javascript:;" title="Level 5.2">
+																	<i class="fa fa-fw fa-file"></i> Level 4.2
+																</a>
+															</li>
+															<li>
+																<a href="javascript:;" title="Level 5.3">
+																	<i class="fa fa-fw fa-file"></i> Level 4.3
+																</a>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							-->
+
+							
+						{% if user.is_authenticated %}
+						<li>
+							<a href="{% url 'logout' %}"><i class="zmdi zmdi-sign-in"></i> Sign Out</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="{% url 'login' %}"><i class="zmdi zmdi-sign-in"></i> Sign In</a>
+						</li>
+						{% endif %}
+						
+
+
+						</ul>
+					</div>
+				</nav>
+			</aside>
+			<section id="content_outer_wrapper">
+				<div id="content_wrapper" class="simple">
+					
+					<div class="tabpanel tab-header">
+						<ul class="nav nav-tabs p-l-30">
+							{% block topic2 %}
+
+							{% endblock %}
+						</ul>
+					</div>
+					<div id="content" class="container-fluid">
+						<div class="content-body">
+							<div id="card_content" class="tab-content">
+								<div class="tab-pane fade active in" id="templates">
+									
+										<div class="row">
+											{% block all_content %}
+
+											
+											{% endblock %}
+											{% block staff_content %}
+
+											
+											{% endblock %}
+
+										</div>
+										
+																		
+																			
+																													</div>
+																												</div>
+																											</div>
+
+																											</div>
+																											<footer id="footer_wrapper">
+																												<div class="footer-content">
+																													<div class="row copy-wrapper">
+																														<div class="col-xs-8">
+																															<p class="copy">&copy; Copyright <time class="year"></time> MCHIT Department - All Rights Reserved</p>
+																														</div>
+																														<div class="col-xs-4">
+																															<ul class="social">
+																																<li>
+																																	<a href="javascript:void(0)"> </a>
+																																</li>
+																																<li>
+																																	<a href="javascript:void(0)"> </a>
+																																</li>
+																																<li>
+																																	<a href="javascript:void(0)"> </a>
+																																</li>
+																																<li>
+																																	<a href="javascript:void(0)"> </a>
+																																</li>
+																															</ul>
+																														</div>
+																													</div>
+																												</div>
+																											</footer>
+																										</section>
+																									
+																									</div>
+																									<script src="{% static "assets/js/vendor.bundle.js" %}"></script>
+	<script src="{% static "assets/js/app.bundle.js" %}"></script>
+																								</body>
+
+
+</html>

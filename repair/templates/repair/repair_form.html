@@ -1,0 +1,64 @@
+{% extends "mch_link/base.html" %} {% load static %}
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+User: {{ user.first_name }} {{ user.last_name }}
+
+{% endif %}
+{% endblock %}
+
+{% block all_content %}
+
+
+  <div class="col-md-12">
+    <div class="card">
+      <header class="card-heading ">
+        <h2 class="card-title">ขอรับบริการด้านสารสนเทศ</h2>
+
+      </header>
+      <div class="card-body">
+        <form class="form-horizontal"  method="POST">
+          {% csrf_token %}
+          <div class="form-group is-empty">
+
+            <label class="col-sm-2 control-label">ผู้แจ้ง :</label>
+           
+            <div class="col-sm-10" >
+              {{ user.first_name }} {{ user.last_name }}  / {{ user.empuser.empDepartment }} 
+              <input type="hidden" class="form-control" name="repairRequester" maxlength="100" required
+                id="id_repairRequester" value="{{ user.id}}">
+                <input type="hidden" class="form-control" name="repairRequestToken" maxlength="100" required
+                id="id_repairRequestToken" value="{{ user.empuser.empLineToken}}">
+            </div>
+          </div>
+          <div class="form-group is-empty">
+            <label for="name" class="col-md-2 control-label">ประเภท</label>
+            <div class="col-md-10">
+              <select class="select form-control" {{form.repairDetail}} </select>
+            </div>
+          </div>
+
+
+          
+          <div class="form-group is-empty">
+            <label for="textArea" class="col-md-2 control-label">รายละเอียด/อาการเบื้องต้น :</label>
+            <div class="col-md-10">
+
+              <textarea class="form-control" name="repairCause" cols="40" rows="10" maxlength="500" required=""
+                id="id_repairCause" placeholder="สถานที่ / เบอร์โทรติดต่อกลับ / อาการเบื้องต้น"></textarea>
+
+            </div>
+          </div>
+          <div class="form-group is-empty">
+         
+            <div class="col-md-12">
+              <button class="btn btn-success btn-block m-t-40" type="submit">บันทึก</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "mch_link/base.html" %}  {% load static %} 
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+     User: {{ user.first_name }} {{ user.last_name }}
+    
+   {% endif %}
+{% endblock %}
+{% block navsearch %} 
+
+<form role='search' class='navbar-form' id='navbar_form' method='GET' action='.'>
+
+  <div class='form-group'>
+    <input type='text' placeholder="Search and press enter..." class='form-control' id='navbar_search' autocomplete='off' name='q' value='{{ request.GET.q }}'> 
+    <i data-navsearch-close class="zmdi zmdi-close close-search"></i>
+  </div>
+  <button type="submit" class="hidden btn btn-default">Submit</button>
+
+</form>
+{% endblock %}
+
+
+{% block topic2 %}
+{% if user.is_authenticated %}
+<div class="col-md-12">
+
+  <form class='form' method='GET' action='.'>
+    <input class="form-control" type='text' name='q' placeholder="ค้นหา" value='{{ request.GET.q }}'>
+  </form>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+<!--
+{% block sideleft %} 
+<li><a href=""><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
+
+{% endblock %}
+-->
+{% block all_content %}
+
+
+{% for Repair in repair_list %}
+<div class="col-md-4">
+<ul class="blocks blocks-100 blocks-xxl-12 blocks-lg-12 blocks-md-12 card-notes" id="masonry" style="position: relative;">
+<li class="masonry-item" style="position :relative">
+  <div id="note_id_0" value="{{Repair.repairStatus.id}}"
+  
+class="bg-white" 
+    >
+    <div class="card card-note transparent">
+      <header class="card-heading">
+        <div class="row">
+        
+          <div class="col-sm-12"><h2 class="card-title">
+            <button 
+            {% if Repair.repairStatus.id == 1 %}
+            class="btn btn-danger btn-fab btn-fab-xs"
+            ><i class="zmdi zmdi-alert-triangle"
+            {% endif%}
+              {% if Repair.repairStatus.id == 2 %}
+              class="btn btn-warning btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-run"
+              {% endif%}
+              {% if Repair.repairStatus.id == 3 %}
+              class="btn btn-info btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-pin"
+              {% endif%}
+              {% if Repair.repairStatus.id == 4 %}
+              class="btn btn-success btn-fab btn-fab-xs"
+              ><i class="zmdi zmdi-shield-check"
+              {% endif%}
+             ></i></button> {{Repair.repairDetail}}
+
+          </h2> 
+          
+          
+          
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-sm-12"><small>เลขที่ :  0{{Repair.repairDetail.repairType.id}}0{{Repair.repairDetail.id}}0{{Repair.id}} {{Repair.pub_date}} </small>
+            
+          </div>
+        </div>
+            
+      </header>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <medium><i class="zmdi zmdi-bug"></i> : {{Repair.repairCause}}</medium>
+            
+            
+          </div>
+          
+        </div>
+        <div class="row">
+
+          <div class="col-sm-12">
+            
+            <medium><i class="zmdi zmdi-pin"></i> : {{Repair.repairRequester.empuser.empDepartment}}</medium> 
+            
+          </div>
+        </div>
+       
+   <div class="row">
+          <div class="col-sm-6"><medium><i class="zmdi zmdi-account-circle"></i> : {{Repair.repairStaff.first_name}}</medium>
+            
+            
+          </div>
+          
+        </div>    
+    
+      </div>
+      <div class="card-footer">
+        <ul class="card-actions icons left-bottom">
+           <li>
+            {% if perms.repair.add_repair %}
+            <a href="{% url 'repair:repair-review' slug=Repair.slug %}">
+              <i class="zmdi zmdi-mood"></i>
+            </a>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'repair:repair-detail' slug=Repair.slug %}">
+              <i class="zmdi zmdi-collection-item"></i>
+            </a>
+          </li>
+
+
+        </ul>
+        <ul class="card-actions icons right-bottom">
+             
+            <li>
+              {% if perms.repair.change_repair %}
+              <a href="{% url 'repair:repair_recieve' slug=Repair.slug %}">
+                <i class="zmdi zmdi-archive"></i>  
+              </a>
+           
+          
+        
+              {% endif %}
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+
+    </ul>
+  </div>
+
+
+
+  {% endfor %}
+
+
+
+  
+
+  {% endblock %}
+
+  
+
+
+
+{% block content %}
+\
+{% endblock %}
+
+

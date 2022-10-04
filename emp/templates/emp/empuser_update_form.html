@@ -1,0 +1,41 @@
+{% extends "mch_link/base.html" %} {% load static %}
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+User: {{ user.first_name }} {{ user.last_name }}
+
+{% endif %}
+{% endblock %}
+
+{% block all_content %}
+
+
+  <div class="col-md-12">
+    <div class="card">
+      <header class="card-heading ">
+        <h2 class="card-title">Profile</h2>
+
+      </header>
+      <div class="card-body">
+        <form class="form-horizontal" method="POST">
+          {% csrf_token %}
+          
+
+          
+          {{ form.as_p }}
+          <div class="form-group is-empty">
+
+            <div class="col-md-12">
+              <button class="btn btn-success btn-block m-t-40" type="submit">บันทึก</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+
+

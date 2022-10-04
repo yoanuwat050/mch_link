@@ -1,0 +1,56 @@
+{% extends "mch_link/base.html" %}  {% load static %} {% block topic %}
+
+
+{% endblock %}
+{% block all_content %}
+<div class="col-md-12">
+    <ul class="blocks blocks-100 blocks-xxl-12 blocks-lg-12 blocks-md-12 card-notes" id="masonry" style="position: relative;">
+    <li class="masonry-item" style="position :relative">
+      <div id="note_id_0" class="md-bg-yellow-100">
+        <div class="card card-note transparent">
+          <header class="card-heading">
+            <div class="row">
+              <div class="col-sm-6"><h2 class="card-title">{{repair.repairDetail}}</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6"><small>เลขที่ :  0{{repair.repairDetail.repairType.id}}0{{repair.repairDetail.id}}0{{repair.id}} เวลาที่ขอรับบริการ : {{repair.pub_date}} </small>
+              </div>
+            </div>
+            <div class="row">
+             
+              <div class="col-sm-6"><p>ผู้แจ้ง : {{repair.repairRequester}} {{repair.repairRequester.empuser.empDepartment}}</p> <p>ผู้รับงาน : {{repair.repairStaff}} สถานะ : {{repair.repairStatus}} </p>
+              </div>
+
+            </div>        
+          </header>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-6"><p>อาการเบื้องต้น : {{repair.repairCause}}</p>
+                    <p>การแก้ไขโดยเจ้าหน้าที่ : {{repair.repairDesc}}</p>
+                    <p>คะแนนจากผู้รับบริการ : {{repair.repairReview.reviewscore}}</p>
+                    <p>ข้อเสนอแนะจากผู้รับบริการ : {{repair.repairReviewDetail}}</p>
+                    <p>เวลาแจ้ง : {{repair.pub_date}}</p>
+                    <p>เวลารับงาน : {{repair.recieve_time}}</p>
+                    <p>เวลาเริ่มดำเนินการ : {{repair.work_time}}</p>
+                    <p>เวลาสิ้นสุดการทำงาน : {{repair.done_time}}</p>
+
+                </div>
+
+            
+            
+       
+        
+          </div>
+         
+          </div>
+        </div>
+      </li>
+    
+        </ul>
+      </div>
+    
+
+{% endblock %}
+
+
+

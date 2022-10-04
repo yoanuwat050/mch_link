@@ -1,0 +1,84 @@
+{% extends "mch_link/base.html" %}  {% load static %} 
+
+
+{% block profile_loginname %}
+{% if user.is_authenticated %}
+     User: {{ user.first_name }} {{ user.last_name }}
+    
+   {% endif %}
+{% endblock %}
+{% block all_content %}
+<div class="col-md-12">
+    <ul class="blocks blocks-100 blocks-xxl-12 blocks-lg-12 blocks-md-12 card-notes" id="masonry" style="position: relative;">
+    <li class="masonry-item" style="position :relative">
+      <div id="note_id_0" class="md-bg-yellow-100">
+        <div class="card card-note transparent">
+          <header class="card-heading">
+            <div class="row">
+              <div class="col-sm-6"><h2 class="card-title">ยืนยันการปิดงาน</h2></div>
+            </div>   
+          </header>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group label-floating is-empty">
+                          <div class="col-md-12">
+                              <h3>เวลาปิดงาน : {% now " d/m/Y G:i:s"%} </h3>
+                             
+                            <input type="hidden" name="done_time" value='{% now " d/m/Y G:i:s"%}' id="id_done_time">
+                            <input type="hidden" name="initial-done_time" value='{% now " d/m/Y G:i:s"%}' id="initial-id_done_time">
+                       
+                            
+                          </div>
+                          <div class="col-md-12 ">
+                             
+                              <h3>สถานะ : เสร็จสิ้น</h3>
+                        
+                    
+                          
+                            <input type="hidden" class="form-control" name="repairStatus" maxlength="100" required id="id_repairStatus" value="4">
+                           
+                          </div>
+                          <div class="col-md-12 ">
+                            <h3>ผู้ดำเนินการ : {{ user.first_name }} {{ user.last_name }} </h3>
+                        
+                            <input type="hidden" class="form-control" name="repairStaff" maxlength="100" required id="id_repairStaf" value="{{ user.id}}">
+                            
+                          </div>
+
+
+                          <div class="col-md-12 ">
+                            <h3>สรุปผล</h3>
+
+                            <textarea class="form-control" name="repairDesc" cols="40" rows="10" maxlength="500" required="" id="id_repairDesc"></textarea>
+                        
+                            
+                          </div>
+                          <div class="col-md-12 ">
+                            <button class="btn btn-success btn-block m-t-40" type="submit">CONFIRM</button>
+                          </div>
+                        </div>
+                        
+                      </form>
+                </div>
+
+            
+            
+       
+        
+          </div>
+         
+          </div>
+        </div>
+      </li>
+    
+        </ul>
+      </div>
+    
+
+
+
+
+{% endblock %}
