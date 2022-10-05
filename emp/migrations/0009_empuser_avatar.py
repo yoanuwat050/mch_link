@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('emp', '0008_remove_empuser_pub_date'),
+        ('emp', '0006_remove_empuser_pub_date'),
     ]
 
     operations = [
