@@ -73,13 +73,13 @@ class Repair(models.Model):
             token = 'K4fGZ4VmVndAQQzbZVdxZZfey5nZUtacE9J0RVTN56e'
             line = Line(token)
             t1=self.repairDetail
-            t2 = self.repairCause,'http://127.0.0.1:8000/repair/'
+            t2 = self.repairCause,'http://18.206.248.221:8000/repair/'
             send = line.send_msg(t1),line.send_msg(t2)
         elif self.repairStatus.id != 1:
             token = self.repairRequestToken 
             line = Line(token)
             t1 = " การขอรับบริการของคุณ "
-            t2 = self.repairStatus,' แล้ว','รายละเอียด : http://127.0.0.1:8000/repair/allRepair/'
+            t2 = self.repairStatus,' แล้ว  :   http://18.206.248.221:8000/repair/allRepair/'
             send = line.send_msg(t1) ,line.send_msg(t2)
         #send = line.send_msg(self.repairStatus)   
         super(Repair, self).save(*args, **kwargs)  
