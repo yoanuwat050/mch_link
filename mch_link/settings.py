@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-b1b@on&xus!8@@pp(plapgmnyb0sahmpa-6&d+8-6um+*-g7w-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1','18.206.248.221']
 
 
 # Application definition
@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'mchlink_database',
         'USER': 'mchlink',
         'PASSWORD': 'Mch@11192',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
